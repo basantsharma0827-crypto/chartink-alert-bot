@@ -1,0 +1,20 @@
+services:
+  - type: worker
+    name: chartink-alert-bot
+    env: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: SCREENER_URL
+        value: https://chartink.com/screener/copy-morning-scanner-for-buy-nr7-based-breakout-8
+      - key: POLL_SECONDS
+        value: 60
+      - key: STATE_FILE
+        value: seen_state.json
+      - key: REQUEST_TIMEOUT
+        value: 30
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
